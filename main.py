@@ -1,8 +1,8 @@
 print('Задание "Животные на ферме дяди Толи"')
 # Задача 1
 
-class Sheep:
-    sound = 'бе бе'
+class Animals:
+    sound = ''
 
     def __init__(self, name, weight):
         self.name = name
@@ -13,94 +13,43 @@ class Sheep:
 
     def feeding(self):
         print('Вы покормили', self.name)
+
+
+class Bird(Animals):
+    def collect_eggs(self):
+        print('Вы собрали яйца у ', self.name)
+
+
+class Mammal(Animals):  # млекопитающие
+    def milk(self):
+        print('Вы подоили', self.name)
+
+
+class Sheep(Animals):
+    sound = 'бе бе'
 
     def shearing(self):
         print('Вы постригли', self.name)
 
 
-class Goose:
+class Goose(Bird):
     sound = 'га га'
 
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
 
-    def say(self):
-        print(self.sound)
-
-    def feeding(self):
-        print('Вы покормили', self.name)
-
-    def collect_eggs(self):
-        print('Вы собрали яйца у ', self.name)
-
-
-class Chicken:
+class Chicken(Bird):
     sound = 'ко ко'
 
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
 
-    def say(self):
-        print(self.sound)
-
-    def feeding(self):
-        print('Вы покормили', self.name)
-
-    def collect_eggs(self):
-        print('Вы собрали яйца у ', self.name)
-
-
-class Duck:
+class Duck(Bird):
     sound = 'кря кря'
 
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
 
-    def say(self):
-        print(self.sound)
-
-    def feeding(self):
-        print('Вы покормили', self.name)
-
-    def collect_eggs(self):
-        print('Вы собрали яйца у ', self.name)
-
-
-class Cow:
+class Cow(Mammal):
     sound = 'му му'
 
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
 
-    def say(self):
-        print(self.sound)
-
-    def feeding(self):
-        print('Вы покормили', self.name)
-
-    def milk(self):
-        print('Вы подоили', self.name)
-
-
-class Goat:
+class Goat(Mammal):
     sound = 'бе бе'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
-    def say(self):
-        print(self.sound)
-
-    def feeding(self):
-        print('Вы покормили', self.name)
-
-    def milk(self):
-        print('Вы подоили', self.name)
 print()
 
 # Задача 2
@@ -122,10 +71,12 @@ max_weight = grey_goose.weight
 max_weight_name = grey_goose.name
 
 for animal in animals:
+    animal.say()
     common_sum += animal.weight
     if animal.weight > max_weight:
         max_weight = animal.weight
         max_weight_name = animal.name
 
-print('Общий вес животных', common_sum, 'кг')
-print('Самый тяжелый', max_weight_name)
+print()
+print('Общий вес животных:', common_sum, 'кг')
+print('Самый тяжелый:', max_weight_name)
